@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/jquery.js"></script>
+    <title>Add Customer</title>
+</head>
+<style>
+.width30 {
+		width: 30%;
+	}
+	.width70 {
+		width: 70%;	
+	}
+	.floatL{
+		float: left;
+	}
+	.width50{
+		width: 50%;
+	}
+	.floatR{
+		float: right;
+	}
+	.btn{
+		width: 100%;
+		border-radius: 0px;
+	}
+	.width100{
+		width: 100%;
+	}
+	.row{
+		margin-left: -20px;
+		margin-right: -20px;
+
+	}
+	.boxStyle{
+		padding: 20px; 
+		border-radius: 25px; 
+		border-top: 6px solid #dc3545;
+		border-bottom: 6px solid #28a745;
+	}
+
+</style>
+
+<body class="bg-dark">
+	
+	<!-- header start              -->
+            <header class="header_area">
+      <div class="main_menu">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+              <a
+                class="navbar-brand logo_h"
+                href="/"
+                style="color: white; font-size: 20px; font-weight: bold"
+                >DIGITAL BANK</a
+              >
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <div
+                class="collapse navbar-collapse offset"
+                id="navbarSupportedContent"
+              >
+                <ul class="nav navbar-nav menu_nav ml-auto"> 
+                  <li class="nav-item "><a class="nav-link" href="/" >Home</a></li>
+                   <li class="nav-item active">
+                    <a class="nav-link  " href="/add" >Add Customer</a>
+                  </li>
+                  <li class="nav-item ">
+                    <a class="nav-link  " href="/users" >Transfer Money</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/history/0">Transfer History</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+          <!-- header end                         -->
+	<div class="container bg-dark">
+
+        <div class="bg-dark mt-5" style="height: 60px; padding: 5px;">
+            <h3 class="text-light mt-5" style="text-align: center;">Create a Customer Account</h3>
+        </div> 
+        
+	<div class="row mt-5">
+		<div class="col-sm-1"></div>
+		<div class="col-sm-2"></div>		
+		<div class="col-sm-6 bg-light boxStyle">
+			<form method="POST" action="/addUser"  >
+	<div class="form-group">
+		<div class="width30 floatL"><label>Name</label></div>
+		<div class="width70 floatR"><input id="name" class="width100 form-control" name="name" type="text" required size="20">
+	</div><br><br>
+	
+	<div class="form-group">
+		<div class="width30 floatL"><label>Email</label></div>
+		<div class="width70 floatR"><input class="width100 form-control" name="email"    type="email"required size="20"></div>
+	</div><br><br>
+	<div class="form-group">
+		<div class="width30 floatL"><label>Amount</label></div>
+		<div class="width70 floatR"><input class="width100 form-control" name="amount" type="number" required size="20"></div>
+	</div><br><br>
+
+  	<div class="form-group">
+  	<div class="row">
+	<div class="width50"><input class="btn btn-success" type="submit"   value="Submit" style="font-weight: bold"></div>
+ 	<div class="width50"><input class="btn btn-danger" type="reset" style="font-weight: bold"></div>		
+  	</div>
+  	</div>
+     </form>      
+		</div>
+		<div class="col-sm-1"></div>
+		<div class="col-sm-2"></div>
+	</div> 
+	</div> 
+	
+</body>
+</html>

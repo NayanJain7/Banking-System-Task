@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Details</title>
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <script src="/js/bootstrap.js"></script>
+  </head>
+
+  <body>
+  
+    <section>
+      <div class="card mx-3">
+      
+        <div class="card-body bg-dark">
+  
+          
+            <header class="header_area">
+      <div class="main_menu">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+              <a
+                class="navbar-brand logo_h"
+                href="/"
+                style="color: white; font-size: 20px; font-weight: bold"
+                >DIGITAL BANK</a
+              >
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <div
+                class="collapse navbar-collapse offset"
+                id="navbarSupportedContent"
+              >
+                <ul class="nav navbar-nav menu_nav ml-auto"> 
+                  <li class="nav-item "><a class="nav-link" href="/" >Home</a></li>
+                   <li class="nav-item ">
+                    <a class="nav-link  " href="/add" >Add Customer</a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link  " href="/users" >Transfer Money</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/history/0">Transfer History</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+          
+            
+
+          <div class="table-responsive bg-white mt-5">
+          
+         
+            <table class="table table-hover table-bordered my-auto">
+            <div class="text-center mt-2">
+                 <h2 class="">Trasnsfer Money</h2>
+          </div>
+            
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#id</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="user : ${users}">
+                  <th scope="row" th:text="${user.id}"></th>
+                  <td th:text="${user.name}"></td>
+                  <td th:text="${user.email}"></td>
+                  <td th:text="${user.amount}"></td>
+                  <td>
+                    <div class="text-center">
+                      <form
+                        method="post"
+                        th:action="@{'/transfer_page/'+${user.id}}"
+                      >
+                        <button class="btn btn-info btn-md" type="submit">
+                          Transfer
+                        </button>
+                      </form>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+      <script src="js/jquery.js"></script>
+  </body>
+</html>

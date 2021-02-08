@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transfer Money</title>
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/transfer.css" />
+
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/sweetalert.js"></script>
+  </head>
+  <body>
+    <div class="card card_body bg-info">
+      <div class="card-body bg-warning">
+        <!--  Sender detail start -->
+        <div class="table-responsive bg-white">
+          <table class="table table-hover table-bordered my-auto">
+            <h4 class="text-center">Sender detail</h4>
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">total Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" th:text="${sender.id}"></th>
+
+                <td th:text="${sender.name}"></td>
+                <td th:text="${sender.email}"></td>
+                <td id="amount" th:text="${sender.amount}"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--  Sender detail end -->
+
+        <form method="post" th:action="@{'/transfer/money/'+${sender.id}}" id="form">
+          <div class="form-group mt-3">
+            <h4 class="text-center">Receiver details</h4>
+
+            <div class="selectBox">
+              <select
+                name="dropdown"
+                class="btn btn-secondary form-control"
+                required
+              >
+                <option selected disabled>Select Receiver</option>
+                <option th:each="r : ${receiver}" th:value="${r.id}">
+                  Name : <span th:text="${r.name}"></span> , Amount :
+                  <span th:text="${r.amount}"></span>
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <input
+              type="number"
+              name="debit"
+              id="enterAmount"
+              class="form-control"
+              placeholder="Enter Amount to transfer"
+              required
+            />
+            <button class="btn btn-success ml-1" onclick="checkamount()">
+              Transfer
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      function checkamount() {
+        event.preventDefault();
+
+        var total_amount = Number(document.getElementById("amount").innerText);
+		var enter_amount = Number(document.getElementById("enterAmount").value);
+		
+
+        if (enter_amount <total_amount) {
+          swal({
+            title: "Transfered",
+            text: "Money has been transfered successfully.",
+            icon: "success",
+          }).then((success) => {
+			 document.getElementById("form").submit();
+		  });
+		} 
+		else {
+          swal({
+            title: "Alert",
+            text: `Insufficient Balance`,
+            icon: "warning",
+            dangerMode: true,
+          });
+        }
+      }
+    </script>
+  </body>
+</html>
