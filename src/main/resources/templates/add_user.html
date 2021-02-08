@@ -107,7 +107,7 @@
 		<div class="col-sm-1"></div>
 		<div class="col-sm-2"></div>		
 		<div class="col-sm-6 bg-light boxStyle">
-			<form method="POST" action="/addUser"  >
+			<form method="POST" action="/addUser" id="form"  >
 	<div class="form-group">
 		<div class="width30 floatL"><label>Name</label></div>
 		<div class="width70 floatR"><input id="name" class="width100 form-control" name="name" type="text" required size="20">
@@ -124,7 +124,7 @@
 
   	<div class="form-group">
   	<div class="row">
-	<div class="width50"><input class="btn btn-success" type="submit"   value="Submit" style="font-weight: bold"></div>
+	<div class="width50"><input class="btn btn-success" type="submit" onclick="showMessage()"  value="Submit" style="font-weight: bold"></div>
  	<div class="width50"><input class="btn btn-danger" type="reset" style="font-weight: bold"></div>		
   	</div>
   	</div>
@@ -134,6 +134,19 @@
 		<div class="col-sm-2"></div>
 	</div> 
 	</div> 
-	
+	<script>
+ 
+ 	function showMessage() {
+    	  
+    	  event.preventDefault();
+    	 swal({
+    	        title : "Added!!",
+		text : "Customer added successfully.",
+		icon : "success",
+	});
+    	 
+    	 setTimeout(()=>{document.getElementById("form").submit()},500);
+    }
+	</script>
 </body>
 </html>
