@@ -108,7 +108,7 @@
 		<div class="col-sm-1"></div>
 		<div class="col-sm-2"></div>		
 		<div class="col-sm-6 bg-light boxStyle">
-			<form method="POST" action="/addUser" id="form"  >
+			<form method="POST" action="/addUser" id="form" onsubmit="showMessage()" >
 	<div class="form-group">
 		<div class="width30 floatL"><label>Name</label></div>
 		<div class="width70 floatR"><input id="name" class="width100 form-control" name="name" autocomplete="off" type="text" required size="20">
@@ -144,9 +144,10 @@
     	        title : "Added!!",
 		text : "Customer added successfully.",
 		icon : "success",
+		timer:2000,
 	});
     	 
-    	 setTimeout(()=>{document.getElementById("form").submit()},500);
+    	 setTimeout(()=>{document.getElementById("form").submit()},600);
     }
 	</script>
 </body>
